@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            title is provided by inheriting templates
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if IE]><script
+      src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script><![endif]-->
+</head>
+
+<body>
+
+<div><!-- start of container -->
+    <div class="container">
+        <div class="status row">
+        <div class="offset-by-eight four columns">
+            <ul class="inline">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout_urlpattern' %}">
+                        Log Out, {{ user.get_username }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'login_urlpattern' %}">
+                        Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <header>
+        <h1>Nimish Mathur - Final Project</h1>
+        <h2>Job Recruitment Information System</h2>
+    </header>
+   <nav>
+        <ul>
+        {% if perms.jobinfo.view_jobrecruiter %}
+                <li>
+                    <a href="{% url 'jobinfo_jobRecruiter_list_urlpattern' %}">
+                        Job Recruiter</a></li>
+        {% endif %}
+
+        {% if perms.jobinfo.view_company %}
+            <li>
+                <a href="{% url 'jobinfo_company_list_urlpattern' %}">
+                    Company</a></li>
+        {% endif %}
+
+        {% if perms.jobinfo.view_position %}
+        <li>
+            <a href="{% url 'jobinfo_position_list_urlpattern' %}">
+                Position</a></li>
+        {% endif %}
+
+        {% if perms.jobinfo.view_appcycle %}
+        <li>
+            <a href="{% url 'jobinfo_appCycle_list_urlpattern' %}">
+                Application Cycle</a></li>
+        {% endif %}
+
+        {% if perms.jobinfo.view_jobseeker %}
+        <li>
+            <a href="{% url 'jobinfo_jobSeeker_list_urlpattern' %}">
+                Job Seeker</a></li>
+        {% endif %}
+
+        {% if perms.jobinfo.view_application %}
+        <li>
+            <a href="{% url 'jobinfo_application_list_urlpattern' %}">
+                Application</a></li>
+        {% endif %}
+        <li>
+            <a href="{% url 'about_urlpattern' %}">
+                About</a></li>
+        </ul>
+    </nav>
+        <main>
+            {% block content %}
+                <div class="row">
+                    <section class="eight columns">
+                        {% block org_content %}
+                            This is default content!
+                        {% endblock %}
+                    </section>
+                    <section class="desktop four columns">
+                        {% block create_button %}{% endblock %}
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                        {% block content_footer %}{% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </main>
+</div>
+
+<footer>
+    <p>
+        The work of Nimish Mathur.
+    </p>
+</footer>
+
+</body>
+</html>
+

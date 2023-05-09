@@ -1,0 +1,55 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Job Recruiter List
+{% endblock %}
+
+{% block create_button %}
+    {% if perms.jobinfo.add_jobRecruiter %}
+        <a
+                href="{% url 'jobinfo_jobRecruiter_create_urlpattern' %}"
+                class="button button-primary">
+            Create New Job Recruiter</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
+    <h2>Job Recruiter List</h2>
+    {% if perms.jobinfo.add_jobRecruiter %}
+        <div class="mobile">
+            <a
+                    href="{% url 'jobinfo_jobRecruiter_create_urlpattern' %}"
+                    class="button button-primary">
+                Create New Job Recruiter</a>
+        </div>
+    {% endif %}
+    <ul>
+        {% for jobRecruiter in jobRecruiter_list %}
+            <li>
+                <a href="{{ jobRecruiter.get_absolute_url }}">{{ jobRecruiter }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no Job Recruiters available.</em></li>
+        {% endfor %}
+    </ul>
+    {% if is_paginated %}
+    <ul>
+      {% if previous_page_url %}
+        <li>
+          <a href="{{ previous_page_url }}">
+            Previous</a>
+        </li>
+      {% endif %}
+      <li>
+        Page {{ jobRecruiter_list.number }}
+        of {{ paginator.num_pages }}
+      </li>
+      {% if next_page_url %}
+        <li>
+          <a href="{{ next_page_url }}">
+            Next</a>
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
+{% endblock %}

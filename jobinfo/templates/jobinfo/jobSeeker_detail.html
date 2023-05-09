@@ -1,0 +1,54 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    JobSeeker - {{ jobSeeker }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ jobSeeker}} </h2>
+    <ul class="inline">
+        {% if perms.jobinfo.change_jobSeeker %}
+        <li>
+          <a href="{{ jobSeeker.get_update_url }}"
+          class="button button-primary">
+            Edit Job Seeker</a></li>
+        {% endif %}
+        {% if perms.jobinfo.delete_jobSeeker %}
+        <li>
+          <a href="{{ jobSeeker.get_delete_url }}"
+          class="button button-primary">
+            Delete Job Seeker</a></li>
+        {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td>{{ jobSeeker.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>{{ jobSeeker.last_name }}</td>
+            </tr>
+            {% if jobSeeker.disambiguator %}
+            <tr>
+                <th>Disambiguator:</th>
+                <td>{{ jobSeeker.disambiguator }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </section>
+
+    <section>
+        <h3>Application</h3>
+        <ul>
+            {% for application in application_list %}
+                <li>
+                    <a href="{{ application.get_absolute_url }}">{{ application }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no applications for this Job Seeker.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

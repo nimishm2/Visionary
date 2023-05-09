@@ -1,0 +1,19 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Delete Application
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ application.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            application {{ application }}?
+        </p>
+        <a href="{{ application.get_absolute_url }}">Cancel</a>
+        <button type="submit">Delete Application</button>
+    </form>
+{% endblock %}

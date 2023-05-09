@@ -1,0 +1,37 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Application Cycle List
+{% endblock %}
+
+{% block create_button %}
+    {% if perms.jobinfo.add_appCycle %}
+        <a
+                href="{% url 'jobinfo_appCycle_create_urlpattern' %}"
+                class="button button-primary">
+            Create New Application Cycle</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
+    <h2>Application Cycle List</h2>
+    {% if perms.jobinfo.add_appCycle %}
+        <div class="mobile">
+            <a
+                    href="{% url 'jobinfo_appCycle_create_urlpattern' %}"
+                    class="button button-primary">
+                Create New Application Cycle</a>
+        </div>
+    {% endif %}
+    <ul>
+        {% for appCycle in appCycle_list %}
+            <li>
+                <a href="{{ appCycle.get_absolute_url }}">
+                    {{ appCycle }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no  Application Cycles available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Application Cycle - {{ appCycle }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ appCycle }}</h2>
+                <ul class="inline">
+                    {% if perms.jobinfo.change_appCycle %}
+                        <li>
+                            <a href="{{ appCycle.get_update_url }}"
+                               class="button button-primary">
+                                Edit Application Cycle</a></li>
+                    {% endif %}
+                    {% if perms.jobinfo.delete_appCycle %}
+                        <a href="{{ appCycle.get_delete_url }}"
+                           class="button button-primary">
+                            Delete Application Cycle</a></li>
+                    {% endif %}
+                </ul>
+                <section>
+                    <table>
+                        <tr>
+                            <th>Application Cycle Name:</th>
+                            <td>{{ appCycle }}</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h3>Companies</h3>
+                    <ul>
+                        {% for company in company_list %}
+                            <li>
+                                <a href="{{ company.get_absolute_url }}">{{ company }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no companies for this Application Cycle.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
+
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Application - {{ application }}
+{% endblock %}
+
+{% block content %}
+<article>
+  <div class="row">
+  <div class="offset-by-two eight columns">
+    <h2>{{ student }}</h2>
+    <ul class="inline">
+        {% if perms.jobinfo.change_student %}
+        <li>
+          <a href="{{ application.get_update_url }}"
+          class="button button-primary">
+            Edit Application</a></li>
+        {% endif %}
+        {% if perms.jobinfo.delete_student %}
+            <li>
+          <a href="{{ application.get_delete_url }}"
+          class="button button-primary">
+            Delete Application</a></li>
+        {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Job Seeker:</th>
+                <td><a href="{{ jobSeeker.get_absolute_url }}">{{ jobSeeker }}</a></td>
+            </tr>
+            <tr>
+                <th>Company:</th>
+                <td><a href="{{ company.get_absolute_url }}">{{ company }}</a></td>
+            </tr>
+        </table>
+    </section>
+
+  </div></div> <!-- row -->
+
+</article>
+{% endblock %}

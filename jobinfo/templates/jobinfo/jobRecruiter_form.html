@@ -1,0 +1,15 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Create Job Recruiter
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'jobinfo_jobRecruiter_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Job Recruiter</button>
+    </form>
+{% endblock %}

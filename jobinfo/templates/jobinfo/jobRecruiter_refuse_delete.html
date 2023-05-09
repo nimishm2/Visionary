@@ -1,0 +1,26 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Job Recruiter
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Job Recruiting</h2>
+        <p>
+            You may not delete job recruiter {{ jobRecruiter }}.  This
+            job recruiter is currently assigned to the following
+            companies:
+        </p>
+
+        <ul>
+            {% for company in companies %}
+            <li><a href="{{ company.get_absolute_url }}">{{ company }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'jobinfo_jobRecruiter_list_urlpattern' %}">Job Recruiter List</a>.
+        </p>
+    </div>
+{% endblock %}

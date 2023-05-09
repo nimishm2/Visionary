@@ -1,0 +1,34 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Application List
+{% endblock %}
+
+{% block create_button %}
+    {% if perms.jobinfo.add_student %}
+      <a href="{% url 'jobinfo_application_create_urlpattern' %}"
+         class="button button-primary">
+        Create New Application</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
+  <h2>Application List</h2>
+    {% if perms.jobinfo.add_student %}
+    <div class="mobile">
+      <a href="{% url 'jobinfo_application_create_urlpattern' %}"
+         class="button button-primary">
+        Create New Application</a>
+    </div>
+    {% endif %}
+    <ul>
+        {% for application in application_list %}
+            <li>
+                <a href="{{ application.get_absolute_url }}">{{ application }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no applications available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

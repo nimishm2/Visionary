@@ -1,0 +1,15 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Create Position
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'jobinfo_position_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Position</button>
+    </form>
+{% endblock %}

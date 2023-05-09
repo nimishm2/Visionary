@@ -1,0 +1,15 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Update Company
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ company.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Company</button>
+    </form>
+{% endblock %}

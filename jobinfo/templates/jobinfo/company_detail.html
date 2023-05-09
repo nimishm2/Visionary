@@ -1,0 +1,67 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Company - {{ company }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ company }}</h2>
+                <ul class="inline">
+                    {% if perms.jobinfo.change_company %}
+                    <li>
+                        <a href="{{ company.get_update_url }}"
+                           class="button button-primary">
+                            Edit Company</a></li>
+                    {% endif %}
+                {% if perms.jobinfo.delete_company %}
+                    <li>
+                        <a href="{{ company.get_delete_url }}"
+                           class="button button-primary">
+                            Delete Company</a></li>
+                {% endif %}
+                </ul>
+
+                   <section>
+        <table>
+            <tr>
+                <th>Position:</th>
+                <td><a href="{{ position.get_absolute_url }}">{{ position }}</a></td>
+            </tr>
+            <tr>
+                <th>Company Name:</th>
+                <td>{{ company.company_name }}</td>
+            </tr>
+            <tr>
+                <th>Application Cycle:</th>
+                <td><a href="{{ appCycle.get_absolute_url }}">{{ appCycle }}</a></td>
+            </tr>
+
+            <tr>
+                <th>Job Recruiter:</th>
+                <td><a href="{{ jobRecruiter.get_absolute_url }}">{{ jobRecruiter }}</a></td>
+            </tr>
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Applications</h3>
+        <ul>
+            {% for application in application_list %}
+                <li>
+                    <a href="{{ application.get_absolute_url }}">{{ application.jobSeeker }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no job seekers applying for this company.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

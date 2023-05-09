@@ -1,0 +1,19 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Delete Job Recruiter
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ jobRecruiter.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            Job Recruiter {{ jobRecruiter }}?
+        </p>
+        <a href="{{ jobRecruiter.get_absolute_url }}">Cancel</a>
+        <button type="submit">Delete Job Recruiter</button>
+    </form>
+{% endblock %}

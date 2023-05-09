@@ -1,0 +1,56 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    JobRecruiter - {{ jobRecruiter }}
+{% endblock %}
+
+{% block org_content %}
+    <h2>{{ jobRecruiter}} </h2>
+    <ul>
+        {% if perms.jobinfo.change_jobRecruiter %}
+            <li>
+              <a href="{{ jobRecruiter.get_update_url }}"
+                class="button button-primary">
+                Edit Job Recruiter</a></li>
+        {% endif %}
+        {% if perms.jobinfo.delete_jobRecruiter %}
+            <li>
+              <a href="{{ jobRecruiter.get_delete_url }}"
+                class="button button-primary">
+                Delete Job Recruiter</a></li>
+        {% endif %}
+    </ul>
+
+    <section>
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td>{{ jobRecruiter.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>{{ jobRecruiter.last_name }}</td>
+            </tr>
+            {% if jobRecruiter.disambiguator %}
+            <tr>
+                <th>Disambiguator:</th>
+                <td>{{ jobRecruiter.disambiguator }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </section>
+
+    <section>
+        <h3>Company</h3>
+        <ul>
+            {% for company in company_list %}
+                <li>
+                     <a href="{{ company.get_absolute_url }}">{{ company }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no companies for this Job Recruiter.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
+

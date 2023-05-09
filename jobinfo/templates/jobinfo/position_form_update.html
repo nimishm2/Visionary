@@ -1,0 +1,15 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Update Position
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ position.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Position</button>
+    </form>
+{% endblock %}

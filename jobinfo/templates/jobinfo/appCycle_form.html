@@ -1,0 +1,15 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Create Application Cycle
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'jobinfo_appCycle_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Application Cycle</button>
+    </form>
+{% endblock %}

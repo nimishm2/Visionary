@@ -1,0 +1,26 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Company
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Company</h2>
+        <p>
+            You may not delete company {{ company }}.  This
+            company currently has the following
+            applications:
+        </p>
+
+        <ul>
+            {% for application in applications %}
+            <li><a href="{{ application.get_absolute_url }}">{{ application.jobSeeker }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'jobinfo_company_list_urlpattern' %}">Company List</a>.
+        </p>
+    </div>
+{% endblock %}

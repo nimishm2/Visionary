@@ -1,0 +1,56 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Position - {{ position }}
+{% endblock %}
+
+{% block content %}
+<article>
+  <div class="row">
+  <div class="offset-by-two eight columns">
+    <h2>{{ position }}</h2>
+    <ul class="inline">
+        {% if perms.jobinfo.change_position %}
+        <li>
+          <a
+              href="{{ position.get_update_url }}"
+              class="button button-primary">
+            Edit Position</a></li>
+        {% endif %}
+        {% if perms.jobinfo.delete_position %}
+        <li>
+          <a
+              href="{{ position.get_delete_url }}"
+              class="button button-primary">
+            Delete Position</a></li>
+        {% endif %}
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>Position Number:</th>
+                <td>{{ position.position_number }}</td>
+            </tr>
+            <tr>
+                <th>Position Name:</th>
+                <td>{{ position.position_name }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Companies</h3>
+        <ul>
+            {% for company in company_list %}
+                <li>
+                    <a href="{{ company.get_absolute_url }}">{{ company }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no companies for this position.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+  </div></div> <!-- row -->
+
+</article>
+{% endblock %}

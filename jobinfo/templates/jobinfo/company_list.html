@@ -1,0 +1,36 @@
+{% extends 'jobinfo/base.html' %}
+
+{% block title %}
+    Company List
+{% endblock %}
+
+{% block create_button %}
+    {% if perms.jobinfo.add_company %}
+        <a
+                href="{% url 'jobinfo_company_create_urlpattern' %}"
+                class="button button-primary">
+            Create New Company</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
+    <h2>Company List</h2>
+    {% if perms.jobinfo.add_company %}
+        <div class="mobile">
+            <a
+                    href="{% url 'jobinfo_company_create_urlpattern' %}"
+                    class="button button-primary">
+                Create New Company</a>
+        </div>
+    {% endif %}
+    <ul>
+        {% for company in company_list %}
+            <li>
+                <a href="{{ company.get_absolute_url }}">
+                    {{ company }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no companies available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
