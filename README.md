@@ -4,6 +4,9 @@
 
 ### Author: Nimish Mathur
 
+### Author's Note:
+This repo doesn't have commits. Many of the weeks commits/changes are logged under the progress directory.
+
 ## Application Description:
 Hello and welcome to the Job Recruitment Information System Web Application! The Job Information System was created and designed to help job seekers and job recruiters keep better track of job applications. The job hunting process can be very tedious and there are very few online tools to help people keep track of places they have applied/ received applications from. As part, this application provides both recruiters and job seekers a more effective way to keep track of what companies they have applied to/ received applications from. System administrators have the ability to edit any part of the job application information system process, allowing for additional creation and/ or clean up of data. The Job Recruitment Information System was also created with the hope of eliminating outdated methods like spreadsheets and hand written notes!
 
