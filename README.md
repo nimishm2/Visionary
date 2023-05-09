@@ -7,28 +7,39 @@ Author: Nimish Mathur
 Application Description: Hello and welcome to the Job Recruitment Information System Web Application! The Job Information System was created and designed to help job seekers and job recruiters keep better track of job applications. The job hunting process can be very tedious and there are very few online tools to help people keep track of places they have applied/ received applications from. As part, this application provides both recruiters and job seekers a more effective way to keep track of what companies they have applied to/ received applications from. System administrators have the ability to edit any part of the job application information system process, allowing for additional creation and/ or clean up of data. The Job Recruitment Information System was also created with the hope of eliminating outdated methods like spreadsheets and hand written notes!
 
 Authentication and Authorization Scheme: I have created the Job Recruitment Information System to have 5 key users with unique authorization schemes of what the user is able to access and update:
+
 user: tester
+
 pass: {iSchoolUI}
+
 Reason: This is the super user of the Job Recruitment Information System. It has access to all CRUD functionalities embedded within the web application. 
 
 user: sysadmin
+
 pass: {iSchoolUI}
+
 Reason: The sysadmin user was created for an “employee” of the job recruitment information system website to maintain the application. They have the same root user-like functionality as the superuser, tester.
 
 ** The following users have limited access to the information system based on their user permissions: 
 
 user: schedulingExec
+
 pass: {iSchoolUI}
 	(able to create company and positions)
+
 Reason: The schedulingExec user was created to help create new job positions for companies. This allows other administrators to more directly add job positions for companies and their associated positions.
 
 user: seeker
+
 pass: {iSchoolUI}
+
 Reason: The seeker user was created to view the application system. It doesn’t have the ability to add, change or delete anything. It allows job seekers the ability to view the system and job applications they may have applied to (for tracking purposes).
 
 
 user: coworker
+
 pass: {iSchoolUI}
+
 Reason: Created using a cloning technique from the EZU web application, the coworker only has access to the about page. It was created for someone who may be working on a different project within the same system.
 
 
